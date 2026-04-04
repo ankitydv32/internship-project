@@ -1,11 +1,25 @@
+console.log("Auth routes loaded");
 const express = require("express");
 const router = express.Router();
+
 const authController = require("../controllers/authController");
-const authMiddleware = require("../middleware/authMiddleware");
+const { verifyToken, isAdmin } = require("../middleware/authMiddleware");
 
 router.post("/register", authController.register);
 router.post("/login", authController.login);
+router.get("/test", (req, res) => {
+  res.send("Working");
+});
 
-router.get("/profile", authMiddleware, authController.profile);
+router.get("/profile", verifyToken, authController.profile);
+
+router.get("/admin", verifyToken, isAdmin, (req, res) => {
+  res.json({ message: "Welcome Admin" });
+});
+
+router.get("/verify/:token", authController.verifyEmail);
+
+router.post("/forgot", authController.forgotPassword);
+router.post("/reset/:token", authController.resetPassword);
 
 module.exports = router;
