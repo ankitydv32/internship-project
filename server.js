@@ -1,15 +1,18 @@
-// importing express library
 const express = require("express");
+const connectDB = require("./config/db");
 
-// creating app
 const app = express();
 
-// simple route
+connectDB();
+
+app.use(express.json());
+
+app.use("/api/auth", require("./routes/auth"));
+
 app.get("/", (req, res) => {
-  res.send("Hello! My server is working properly 🚀");
+  res.send("Server working 🚀");
 });
 
-// starting server
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
