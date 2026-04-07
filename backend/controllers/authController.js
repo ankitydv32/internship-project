@@ -11,11 +11,12 @@ exports.register = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = new User({
-    name,
-    email,
-    password: hashedPassword
-  });
+ const user = new User({
+  name,
+  email,
+  password: hashedPassword,
+  role: "user" // default
+});
 
   await user.save();
 
@@ -34,18 +35,26 @@ exports.register = async (req, res) => {
 
 // VERIFY EMAIL
 exports.verifyEmail = async (req, res) => {
-  const tokenData = await EmailToken.findOne({ token: req.params.token });
+  try {
+    const tokenData = await EmailToken.findOne({ token: req.params.token });
 
-  if (!tokenData) return res.json({ message: "Invalid token" });
+    if (!tokenData) {
+      return res.send("<h2>Invalid Token</h2>");
+    }
 
-  const user = await User.findById(tokenData.userId);
+    const user = await User.findById(tokenData.userId);
 
-  user.isEmailVerified = true;
-  await user.save();
+    user.isEmailVerified = true;
+    await user.save();
 
-  await EmailToken.deleteOne({ _id: tokenData._id });
+    await EmailToken.deleteOne({ _id: tokenData._id });
 
-  res.json({ message: "Email verified successfully" });
+    // DIRECT REDIRECT
+    res.redirect("http://localhost:3000");
+
+  } catch (err) {
+    res.send("<h2>Error verifying email</h2>");
+  }
 };
 
 // LOGIN
@@ -54,7 +63,9 @@ exports.login = async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (!user) return res.json({ message: "User not found" });
+  if (!user) {
+    return res.json({ message: "User not found" });
+  }
 
   if (!user.isEmailVerified) {
     return res.json({ message: "Please verify your email first" });
@@ -62,11 +73,17 @@ exports.login = async (req, res) => {
 
   const isMatch = await bcrypt.compare(password, user.password);
 
-  if (!isMatch) return res.json({ message: "Wrong password" });
+  if (!isMatch) {
+    return res.json({ message: "Wrong password" }); 
+  }
 
   const token = jwt.sign({ id: user._id }, "secretkey");
 
-  res.json({ message: "Login success", token });
+  res.json({
+    message: "Login success",
+    token,
+    role: user.role
+  });
 };
 
 // PROFILE
@@ -89,7 +106,7 @@ exports.forgotPassword = async (req, res) => {
 
   res.json({
     message: "Reset link generated",
-    link: `http://localhost:5000/api/auth/reset/${token}`
+    link: `http://localhost:3000/reset/${token}` 
   });
 };
 

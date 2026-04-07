@@ -14,48 +14,28 @@ function Register() {
         password
       });
 
-      alert(res.data.message);
-      alert(res.data.link); // verification link
+      alert("Registered successfully! Verify your email.");
+      window.location.href = res.data.link || "/";
 
     } catch (err) {
-        console.log(err);
       alert("Error in register");
     }
   };
 
-  return (
-    <div>
+ return (
+  <div className="container">
+    <div className="card">
       <h2>Register</h2>
 
-      <input
-        type="text"
-        placeholder="Enter name"
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <br /><br />
-
-      <input
-        type="email"
-        placeholder="Enter email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-
-      <br /><br />
-
-      <input
-        type="password"
-        placeholder="Enter password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <br /><br />
+      <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
+      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 
       <button onClick={handleRegister}>Register</button>
 
       <p><a href="/">Login</a></p>
     </div>
-  );
+  </div>
+);
 }
-
 export default Register;

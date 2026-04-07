@@ -1,42 +1,35 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 
-function ResetPassword() {
-  const { token } = useParams();
-  const [password, setPassword] = useState("");
+function ForgotPassword() {
+  const [email, setEmail] = useState("");
 
-  const handleReset = async () => {
+  const handleSend = async () => {
     try {
-      const res = await axios.post(
-        `http://localhost:5000/api/auth/reset/${token}`,
-        { password }
-      );
+      const res = await axios.post("http://localhost:5000/api/auth/forgot", {
+        email
+      });
 
-      alert(res.data.message);
-alert(res.data.link);
-      window.location.href = "/";
+      alert(res.data?.message || "Success");
+      window.open(res.data.link);
+
     } catch (err) {
-      console.log(err);
-      alert("Error resetting password");
+      alert("Error sending reset link");
     }
   };
 
   return (
-    <div>
-      <h2>Reset Password</h2>
+    <div className="container">
+      <h2>Forgot Password</h2>
 
       <input
-        type="password"
-        placeholder="Enter new password"
-        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter email"
+        onChange={(e) => setEmail(e.target.value)}
       />
 
-      <br /><br />
-
-      <button onClick={handleReset}>Reset Password</button>
+      <button onClick={handleSend}>Send Reset Link</button>
     </div>
   );
 }
 
-export default ResetPassword;
+export default ForgotPassword;
