@@ -1,75 +1,51 @@
-# 🔐 Authentication System (Internship Project)
+# Authentication System (Internship Project)
 
-## 📌 Project Overview
+## Project Description
 
-This is a full-stack user authentication system built using **Node.js, Express, MongoDB, and React**.
-It allows users to register, login, verify email, and reset passwords securely.
+This is a full-stack user authentication system built using Node.js, Express, MongoDB, and React.
+It allows users to register, log in, verify their email, and reset passwords securely.
 
 ---
 
-## 🚀 Features
+## Features
 
-* User Registration & Login
-* JWT Authentication
+* User Registration and Login
+* JWT-based Authentication
 * Email Verification
-* Forgot Password & Reset Password
+* Forgot and Reset Password
 * Protected Routes (Dashboard access)
-* Admin Panel (optional)
 
 ---
 
-## 🛠️ Tech Stack
+## Technologies Used
 
-### 🔹 Backend:
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
-* JWT (Authentication)
-* Bcrypt (Password hashing)
-
-### 🔹 Frontend:
-
-* React.js
-* Axios
-* React Router
+**Backend:** Node.js, Express, MongoDB
+**Frontend:** React, Axios
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 internship-project/
 │
 ├── backend/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── server.js
-│
 ├── frontend/
-│   ├── public/
-│   └── src/
-│
 └── README.md
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## How to Run the Project
 
-### 1️⃣ Clone the repository
+### 1. Clone the Repository
 
 ```
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/ankitydv32/internship-project.git
 cd internship-project
 ```
 
----
-
-### 2️⃣ Setup Backend
+### 2. Run Backend
 
 ```
 cd backend
@@ -77,9 +53,7 @@ npm install
 npm start
 ```
 
----
-
-### 3️⃣ Setup Frontend
+### 3. Run Frontend
 
 ```
 cd frontend
@@ -89,9 +63,9 @@ npm start
 
 ---
 
-## 🔐 Environment Variables (.env)
+## Environment Variables
 
-Create a `.env` file in the backend folder:
+Create a `.env` file inside the `backend` folder and add:
 
 ```
 PORT=5000
@@ -101,20 +75,6 @@ JWT_SECRET=your_secret_key
 
 ---
 
-## 📸 Screenshots
-
-(Add screenshots of Login, Register, Dashboard here)
-
----
-
-## 📌 Future Improvements
-
-* Role-based authentication
-* Deployment (Render + Vercel)
-* UI improvements
-
----
-
-## 👨‍💻 Author
+## Author
 
 Ankit Yadav
