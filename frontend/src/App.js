@@ -12,14 +12,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Auth Routes */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/reset/:token" element={<ResetPassword />} />
         <Route path="/verify/:token" element={<VerifyEmail />} />
 
-        {/* Protected Routes */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>

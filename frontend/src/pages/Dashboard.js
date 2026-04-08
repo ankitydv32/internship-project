@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import API from "../api/authApi";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -11,23 +11,20 @@ function Dashboard() {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    //  Token check (protected route)
     if (!token) {
       alert("Please login first");
       navigate("/");
       return;
     }
 
-    //  Optional: verify token with backend
-    axios.get("http://localhost:5000/api/auth/profile", {
-      headers: {
-        Authorization: token
-      }
-    })
-    .catch(() => {
-      alert("Unauthorized");
-      navigate("/");
-    });
+    // token verify using API instance
+    API.get("/profile")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response?.data);
+      });
 
   }, [navigate]);
 
@@ -45,11 +42,10 @@ function Dashboard() {
       <div className="card">
         <h1>Dashboard</h1>
 
-        <p>Welcome </p>
+        <p>Welcome</p>
         <p>{email}</p>
         <p>Role: {role}</p>
 
-        {/* Admin Access */}
         {role === "admin" && (
           <>
             <p style={{ color: "red" }}>Admin Panel Access</p>

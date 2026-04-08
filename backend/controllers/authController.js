@@ -127,3 +127,24 @@ exports.resetPassword = async (req, res) => {
 
   res.json({ message: "Password reset successful" });
 };
+exports.getUsers = async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+};
+
+exports.updateUser = async (req, res) => {
+  const { role, isActive } = req.body;
+
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { role, isActive },
+    { new: true }
+  );
+
+  res.json(user);
+};
+
+exports.deleteUser = async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.json({ message: "User deleted" });
+};
