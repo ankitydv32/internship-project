@@ -7,6 +7,8 @@ import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
 import VerifyEmail from "./pages/VerifyEmail";
 import Admin from "./pages/Admin";
+import Artworks from "./pages/Artworks";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/artworks" element={<Artworks />} />
       </Routes>
     </Router>
   );

@@ -19,7 +19,7 @@ function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const res = await API.get("/users");
+      const res = await API.get("/auth/users");
 
       console.log(res.data);
 
@@ -35,17 +35,17 @@ function Admin() {
 
   const changeRole = async (id, currentRole) => {
     const newRole = currentRole === "user" ? "admin" : "user";
-    await API.put(`/users/${id}`, { role: newRole });
+    await API.put(`/auth/users/${id}`, { role: newRole });
     fetchUsers();
   };
 
   const toggleActive = async (id, currentStatus) => {
-    await API.put(`/users/${id}`, { isActive: !currentStatus });
+    await API.put(`/auth/users/${id}`, { isActive: !currentStatus });
     fetchUsers();
   };
 
   const deleteUser = async (id) => {
-    await API.delete(`/users/${id}`);
+    await API.delete(`/auth/users/${id}`);
     fetchUsers();
   };
 
@@ -58,17 +58,16 @@ function Admin() {
           Back to Dashboard
         </button>
 
-        {/* Table Wrapper */}
         <div style={{ overflowX: "auto", width: "100%", marginTop: "20px" }}>
-          <table 
-  border="1"
-  cellPadding="10"
-  style={{
-    width: "100%",
-    borderCollapse: "collapse",
-    textAlign: "center"
-  }}
->
+          <table
+            border="1"
+            cellPadding="10"
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              textAlign: "center"
+            }}
+          >
             <thead>
               <tr>
                 <th>Email</th>
@@ -101,6 +100,10 @@ function Admin() {
 
                       <button onClick={() => deleteUser(user._id)}>
                         Delete
+                      </button>
+
+                      <button onClick={() => navigate("/artworks")}>
+                        Manage Artworks
                       </button>
                     </td>
                   </tr>

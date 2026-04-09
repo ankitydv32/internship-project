@@ -18,7 +18,7 @@ function Dashboard() {
     }
 
     // token verify using API instance
-    API.get("/profile")
+   API.get("/auth/profile")
       .then((res) => {
         console.log(res.data);
       })

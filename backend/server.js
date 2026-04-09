@@ -10,7 +10,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// AUTH ROUTES
 app.use("/api/auth", require("./routes/auth"));
+
+//  ARTWORK ROUTES
+app.use("/api/artworks", require("./routes/artwork"));
 
 app.get("/", (req, res) => {
   res.send("Server working ");
