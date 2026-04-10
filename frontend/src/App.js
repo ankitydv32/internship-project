@@ -10,6 +10,9 @@ import Admin from "./pages/Admin";
 import Artworks from "./pages/Artworks";
 import Home from "./pages/Home";
 import ArtworkDetail from "./pages/ArtworkDetail";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 
 function App() {
@@ -25,8 +28,12 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/artworks" element={<Artworks />} />
+
         <Route path="/home" element={<Home />} />
         <Route path="/artwork/:id" element={<ArtworkDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/success" element={<OrderSuccess />} />
       </Routes>
     </Router>
   );

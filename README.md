@@ -58,6 +58,15 @@ internship-project/
 - Price filter
 - Artwork detail page
 - Image support
+
+🔹 Part 5 – Cart & Checkout
+* Add to Cart
+* Remove / Clear Cart
+* Total Price Calculation
+* Checkout Form
+* Demo Payment Integration
+* Order Placement
+* Artwork marked as Sold after purchase
 ---
 
 ## How to Run the Project

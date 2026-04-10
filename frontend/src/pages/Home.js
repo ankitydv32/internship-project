@@ -37,6 +37,12 @@ function Home() {
   return (
     <div style={{ padding: "20px" }}>
       <h2>All Artworks</h2>
+      <button
+         onClick={() => navigate("/cart")}
+        style={{ marginBottom: "10px" }}
+          >
+           Go to Cart
+     </button>
 
       {/* Search */}
       <input
@@ -97,6 +103,14 @@ function Home() {
 
             <p>{item.category || "N/A"}</p>
             <p>₹{item.price}</p>
+            <button
+              onClick={(e) => {
+               e.stopPropagation(); // card click block karega
+              API.post("/cart/add", { artworkId: item._id });
+             }}
+             >
+             Add to Cart
+          </button>
           </div>
         ))}
       </div>

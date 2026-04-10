@@ -12,6 +12,8 @@ app.use(express.json());
 
 // AUTH ROUTES
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/cart", require("./routes/cart"));
+app.use("/api/order", require("./routes/order"));
 
 //  ARTWORK ROUTES
 app.use("/api/artworks", require("./routes/artwork"));
