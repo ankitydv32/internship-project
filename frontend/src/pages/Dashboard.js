@@ -57,6 +57,9 @@ function Dashboard() {
         )}
 
         <button onClick={handleLogout}>Logout</button>
+        <button onClick={() => navigate("/home")}>
+          View Art Gallery
+       </button>
       </div>
     </div>
   );

@@ -58,3 +58,38 @@ exports.toggleHide = async (req, res) => {
 
   res.json({ message: "Updated" });
 };
+
+exports.getPublicArtworks = async (req, res) => {
+  try {
+    const { search, category } = req.query;
+
+    let query = { isHidden: false };
+
+    if (search) {
+      query.$or = [
+        { title: { $regex: search, $options: "i" } },
+        { artist: { $regex: search, $options: "i" } }
+      ];
+    }
+
+    if (category) {
+      query.category = category;
+    }
+
+    const artworks = await Artwork.find(query);
+
+    res.json(artworks);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+exports.getArtworkById = async (req, res) => {
+  try {
+    const art = await Artwork.findById(req.params.id);
+    res.json(art);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching artwork" });
+  }
+};

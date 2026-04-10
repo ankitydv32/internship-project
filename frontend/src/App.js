@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import VerifyEmail from "./pages/VerifyEmail";
 import Admin from "./pages/Admin";
 import Artworks from "./pages/Artworks";
+import Home from "./pages/Home";
+import ArtworkDetail from "./pages/ArtworkDetail";
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/artworks" element={<Artworks />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/artwork/:id" element={<ArtworkDetail />} />
       </Routes>
     </Router>
   );

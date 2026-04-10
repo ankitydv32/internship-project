@@ -33,7 +33,31 @@ internship-project/
 ├── frontend/
 └── README.md
 ```
+🔹 Part 2 – User Management (Admin)
+* Admin login access
+* View all users
+* Change user role (User ↔ Admin)
+* Activate / Deactivate users
+* Delete users
+* Protected admin routes
 
+
+### 🔹 Part 3 – Artwork Management (Admin)
+* Add new artwork
+* Edit artwork details
+* Delete artwork
+* Mark artwork as Sold / Available
+* Hide / Show artwork
+* Admin-only access control
+
+
+## Features Added (Part 4)
+- Artwork listing
+- Search functionality
+- Category filter
+- Price filter
+- Artwork detail page
+- Image support
 ---
 
 ## How to Run the Project
@@ -72,8 +96,8 @@ PORT=5000
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_secret_key
 ```
-
 ---
+
 
 ## Author
 

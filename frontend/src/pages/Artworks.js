@@ -4,12 +4,14 @@ import API from "../api/authApi";
 function Artworks() {
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
-
-  const [form, setForm] = useState({
-    title: "",
-    artist: "",
-    price: ""
-  });
+const [form, setForm] = useState({
+  title: "",
+  artist: "",
+  price: "",
+  category: "",
+  description: "",
+  image: ""
+});
 
   // FETCH
   const fetchData = async () => {
@@ -73,6 +75,26 @@ function Artworks() {
           value={form.price}
           onChange={handleChange}
         />
+         <input
+          name="category"
+          placeholder="Category"
+           value={form.category}
+            onChange={handleChange}
+          />
+
+           <input
+           name="description"
+            placeholder="Description"
+            value={form.description}
+            onChange={handleChange}
+              />
+
+            <input
+            name="image"
+             placeholder="Image URL"
+            value={form.image}
+               onChange={handleChange}
+              />
 
         <button type="submit">
           {editId ? "Update Artwork" : "Add Artwork"}
