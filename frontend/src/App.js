@@ -13,6 +13,7 @@ import ArtworkDetail from "./pages/ArtworkDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
+import Orders from "./pages/Orders";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/success" element={<OrderSuccess />} />
+        <Route path="/orders" element={<Orders />} />
       </Routes>
     </Router>
   );

@@ -67,6 +67,19 @@ internship-project/
 * Demo Payment Integration
 * Order Placement
 * Artwork marked as Sold after purchase
+
+🔹 Part 6 – Order & Sales Management
+
+Place Order from Cart
+Store User Details (Name, Email, Address)
+Save Order in Database
+Auto Clear Cart after Order
+Mark Artwork as Sold
+Admin View All Orders
+Update Delivery Status (Processing → Shipped → Delivered)
+Search Orders by Email
+View Order Details
+Total Revenue Display
 ---
 
 ## How to Run the Project

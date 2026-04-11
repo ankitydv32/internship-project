@@ -14,6 +14,7 @@ app.use(express.json());
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/cart", require("./routes/cart"));
 app.use("/api/order", require("./routes/order"));
+app.use("/api/admin", require("./routes/admin"));
 
 //  ARTWORK ROUTES
 app.use("/api/artworks", require("./routes/artwork"));

@@ -89,7 +89,9 @@ function Admin() {
                       <button onClick={() => changeRole(user._id, user.role)}>
                         Change Role
                       </button>
-
+                         <button onClick={() => navigate("/orders")}>
+                          View Orders
+                       </button>
                       <button
                         onClick={() =>
                           toggleActive(user._id, user.isActive)
